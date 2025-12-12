@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows Optimizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Custom Title Bar -->
+    <div class="titlebar">
+        <div class="titlebar-drag-region">
+            <div class="titlebar-title">
+                <svg class="logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <rect x="3" y="3" width="8" height="8" fill="#00d4ff"/>
+                    <rect x="13" y="3" width="8" height="8" fill="#00d4ff"/>
+                    <rect x="3" y="13" width="8" height="8" fill="#00d4ff"/>
+                    <rect x="13" y="13" width="8" height="8" fill="#00d4ff"/>
+                </svg>
+                <span>Windows Optimizer Pro</span>
+            </div>
+        </div>
+        <div class="window-controls">
+            <button class="window-control" id="minimize-btn">
+                <svg width="12" height="2" viewBox="0 0 12 2">
+                    <rect width="12" height="2" fill="currentColor"/>
+                </svg>
+            </button>
+            <button class="window-control" id="maximize-btn">
+                <svg width="12" height="12" viewBox="0 0 12 12">
+                    <rect width="12" height="12" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+            </button>
+            <button class="window-control close" id="close-btn">
+                <svg width="12" height="12" viewBox="0 0 12 12">
+                    <path d="M1 1L11 11M11 1L1 11" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="nav-items">
+                <!-- Übersicht -->
+                <div class="nav-category">
+                    <div class="nav-category-label">ÜBERSICHT</div>
+                    <a href="#" class="nav-item active" data-section="dashboard">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" fill="currentColor"/>
+                        </svg>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#" class="nav-item" data-section="system-info">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M20 3H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h3l-1 1v2h12v-2l-1-1h3c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 13H4V5h16v11z" fill="currentColor"/>
+                            <circle cx="12" cy="9" r="2" fill="currentColor"/>
+                        </svg>
+                        <span>Systeminfo</span>
+                    </a>
+                </div>
+
+                <!-- Optimierung -->
+                <div class="nav-category">
+                    <div class="nav-category-label">OPTIMIERUNG</div>
+                    <a href="#" class="nav-item" data-section="privacy">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L4 6v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-8-4z" fill="currentColor"/>
+                        </svg>
+                        <span>Datenschutz</span>
+                    </a>
+                    <a href="#" class="nav-item" data-section="performance">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M20.38 8.57l-1.23 1.85a8 8 0 0 1-.22 7.58H5.07A8 8 0 0 1 15.58 6.85l1.85-1.23A10 10 0 0 0 3.35 19a2 2 0 0 0 1.72 1h13.85a2 2 0 0 0 1.74-1 10 10 0 0 0-.27-10.44z" fill="currentColor"/>
+                            <path d="M10.59 15.41a2 2 0 0 0 2.83 0l5.66-8.49-8.49 5.66a2 2 0 0 0 0 2.83z" fill="currentColor"/>
+                        </svg>
+                        <span>Performance</span>
+                    </a>
+                    <a href="#" class="nav-item" data-section="services">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" fill="currentColor"/>
+                            <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                        </svg>
+                        <span>Dienste</span>
+                    </a>
+                    <a href="#" class="nav-item" data-section="apps">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z" fill="currentColor"/>
+                        </svg>
+                        <span>Bloatware</span>
+                    </a>
+                    <a href="#" class="nav-item" data-section="network">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9z" fill="currentColor"/>
+                            <path d="M9 17l3 3 3-3c-1.65-1.66-4.34-1.66-6 0z" fill="currentColor"/>
+                            <path d="M5 13l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z" fill="currentColor"/>
+                        </svg>
+                        <span>Netzwerk</span>
+                    </a>
+                </div>
+
+                <!-- Verwaltung -->
+                <div class="nav-category">
+                    <div class="nav-category-label">VERWALTUNG</div>
+                    <a href="#" class="nav-item" data-section="appearance">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="currentColor"/>
+                            <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" fill="currentColor"/>
+                        </svg>
+                        <span>Erscheinungsbild</span>
+                    </a>
+                    <a href="#" class="nav-item" data-section="backups">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2z" fill="currentColor"/>
+                            <path d="M13 12.67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2v9.67z" fill="currentColor"/>
+                        </svg>
+                        <span>Backups</span>
+                    </a>
+                </div>
+            </div>
+            <div class="sidebar-footer">
+                <div class="admin-status" id="admin-status">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L4 6v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-8-4z" fill="currentColor"/>
+                    </svg>
+                    <span>Prüfe Admin...</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section class="content-section active" id="dashboard">
+                <h1>Dashboard</h1>
+                <p class="subtitle">Übersicht über Systemstatus und schnelle Aktionen</p>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 2L4 6v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-8-4z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Datenschutz</h3>
+                            <p class="stat-value">...</p>
+                            <p class="stat-label">Tweaks aktiv</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M20.38 8.57l-1.23 1.85a8 8 0 0 1-.22 7.58H5.07A8 8 0 0 1 15.58 6.85l1.85-1.23A10 10 0 0 0 3.35 19a2 2 0 0 0 1.72 1h13.85a2 2 0 0 0 1.74-1 10 10 0 0 0-.27-10.44z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Performance</h3>
+                            <p class="stat-value">Prüfe...</p>
+                            <p class="stat-label">Wird geladen</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon orange">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Dienste</h3>
+                            <p class="stat-value">...</p>
+                            <p class="stat-label">Deaktiviert</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon purple">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Apps</h3>
+                            <p class="stat-value">...</p>
+                            <p class="stat-label">Bloatware entfernt</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <h2>Schnellaktionen</h2>
+                    <div class="action-buttons">
+                        <button class="action-btn primary" onclick="applyAllPrivacyTweaks()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 2L4 6v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-8-4z" fill="currentColor"/>
+                            </svg>
+                            Alle Datenschutz-Tweaks anwenden
+                        </button>
+                        <button class="action-btn secondary" onclick="optimizePerformance()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M20.38 8.57l-1.23 1.85a8 8 0 0 1-.22 7.58H5.07A8 8 0 0 1 15.58 6.85l1.85-1.23A10 10 0 0 0 3.35 19a2 2 0 0 0 1.72 1h13.85a2 2 0 0 0 1.74-1 10 10 0 0 0-.27-10.44z" fill="currentColor"/>
+                            </svg>
+                            System optimieren
+                        </button>
+                        <button class="action-btn secondary" onclick="updateDashboard()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" fill="currentColor"/>
+                            </svg>
+                            Dashboard aktualisieren
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Privacy Section -->
+            <section class="content-section" id="privacy">
+                <h1>Datenschutz & Telemetrie</h1>
+                <p class="subtitle">Kontrolliere welche Daten Windows sammelt und sendet</p>
+
+                <div class="info-banner">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="currentColor"/>
+                    </svg>
+                    <span>Diese Einstellungen benötigen Administrator-Rechte. Ein Neustart kann erforderlich sein.</span>
+                </div>
+
+                <div class="tweaks-container" id="privacy-tweaks">
+                    <!-- Tweaks werden dynamisch geladen -->
+                </div>
+            </section>
+
+            <!-- Performance Section -->
+            <section class="content-section" id="performance">
+                <h1>Performance-Optimierung</h1>
+                <p class="subtitle">Verbessere die Systemleistung durch Registry-Tweaks</p>
+
+                <div class="tweaks-container" id="performance-tweaks">
+                    <!-- Tweaks werden dynamisch geladen -->
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section class="content-section" id="services">
+                <h1>Windows-Dienste</h1>
+                <p class="subtitle">Verwalte Windows-Dienste um Ressourcen zu sparen</p>
+
+                <div class="services-container" id="services-list">
+                    <!-- Dienste werden dynamisch geladen -->
+                </div>
+            </section>
+
+            <!-- Apps Section -->
+            <section class="content-section" id="apps">
+                <h1>Bloatware entfernen</h1>
+                <p class="subtitle">Entferne vorinstallierte Apps die du nicht brauchst</p>
+
+                <div class="warning-banner">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" fill="currentColor"/>
+                    </svg>
+                    <span>Vorsicht! Einige Apps sind schwer wiederherzustellen. Erstelle einen Wiederherstellungspunkt.</span>
+                </div>
+
+                <div class="apps-container" id="apps-list">
+                    <!-- Apps werden dynamisch geladen -->
+                </div>
+            </section>
+
+            <!-- Backups Section -->
+            <section class="content-section" id="backups">
+                <h1>Backup & Wiederherstellung</h1>
+                <p class="subtitle">Verwalte Registry-Backups und stelle vorherige Zustände wieder her</p>
+
+                <div class="info-banner">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="currentColor"/>
+                    </svg>
+                    <span>Backups werden automatisch erstellt bevor Registry-Änderungen angewendet werden.</span>
+                </div>
+
+                <div class="backup-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon blue">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Gesamt Backups</h3>
+                            <p class="stat-value" id="total-backups">0</p>
+                            <p class="stat-label">Gespeichert</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Wiederherstellbar</h3>
+                            <p class="stat-value" id="restorable-backups">0</p>
+                            <p class="stat-label">Aktive Backups</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="backup-filters">
+                    <button class="filter-btn active" data-filter="all">Alle</button>
+                    <button class="filter-btn" data-filter="privacy">Datenschutz</button>
+                    <button class="filter-btn" data-filter="performance">Performance</button>
+                    <button class="filter-btn" data-filter="manual">Manuell</button>
+                </div>
+
+                <div class="backups-container" id="backups-list">
+                    <!-- Backups werden dynamisch geladen -->
+                </div>
+            </section>
+
+            <!-- System Info Section -->
+            <section class="content-section" id="system-info">
+                <div class="system-info-header">
+                    <div>
+                        <h1>System-Informationen</h1>
+                        <p class="subtitle">Überwache CPU, RAM, Festplatte und Netzwerk in Echtzeit</p>
+                    </div>
+                    <button class="action-btn secondary" onclick="refreshSystemInfo()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" fill="currentColor"/>
+                        </svg>
+                        Aktualisieren
+                    </button>
+                </div>
+
+                <!-- CPU Section -->
+                <div class="sysinfo-section">
+                    <h2 class="sysinfo-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M7 19h10V5H7v14zm0 2h10c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2z" fill="currentColor"/>
+                        </svg>
+                        CPU
+                    </h2>
+                    <div class="sysinfo-grid">
+                        <div class="sysinfo-card">
+                            <div class="sysinfo-card-label">Modell</div>
+                            <div class="sysinfo-card-value" id="cpu-model">Lade...</div>
+                        </div>
+                        <div class="sysinfo-card">
+                            <div class="sysinfo-card-label">Kerne</div>
+                            <div class="sysinfo-card-value" id="cpu-cores">-</div>
+                        </div>
+                        <div class="sysinfo-card">
+                            <div class="sysinfo-card-label">Auslastung</div>
+                            <div class="sysinfo-card-value" id="cpu-usage">-</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="cpu-progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="sysinfo-card">
+                            <div class="sysinfo-card-label">Frequenz</div>
+                            <div class="sysinfo-card-value" id="cpu-frequency">-</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RAM Section -->
+                <div class="sysinfo-section">
+                    <h2 class="sysinfo-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M6 2h12v16H6V2zm2 14h8V4H8v12z" fill="currentColor"/>
+                        </svg>
+                        Arbeitsspeicher
+                    </h2>
+                    <div class="sysinfo-grid">
+                        <div class="sysinfo-card">
+                            <div class="sysinfo-card-label">Gesamt</div>
+                            <div class="sysinfo-card-value" id="ram-total">-</div>
+                        </div>
+                        <div class="sysinfo-card">
+                            <div class="sysinfo-card-label">Verwendet</div>
+                            <div class="sysinfo-card-value" id="ram-used">-</div>
+                        </div>
+                        <div class="sysinfo-card">
+                            <div class="sysinfo-card-label">Frei</div>
+                            <div class="sysinfo-card-value" id="ram-free">-</div>
+                        </div>
+                        <div class="sysinfo-card wide">
+                            <div class="sysinfo-card-label">Auslastung</div>
+                            <div class="sysinfo-card-value" id="ram-usage">-</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="ram-progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Disk Section -->
+                <div class="sysinfo-section">
+                    <h2 class="sysinfo-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM4 18V6h16v12H4z" fill="currentColor"/>
+                        </svg>
+                        Festplatten
+                    </h2>
+                    <div id="disk-list" class="disk-list">
+                        <!-- Disks werden dynamisch geladen -->
+                    </div>
+                </div>
+
+                <!-- Network Section -->
+                <div class="sysinfo-section">
+                    <h2 class="sysinfo-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z" fill="currentColor"/>
+                        </svg>
+                        Netzwerk
+                    </h2>
+                    <div id="network-list" class="network-list">
+                        <!-- Network adapters werden dynamisch geladen -->
+                    </div>
+                </div>
+
+                <!-- System Uptime -->
+                <div class="sysinfo-section">
+                    <h2 class="sysinfo-title">System-Betriebszeit</h2>
+                    <div class="sysinfo-card large">
+                        <div class="sysinfo-card-value large" id="system-uptime">-</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Appearance Section -->
+            <section class="content-section" id="appearance">
+                <h1>Erscheinungsbild</h1>
+                <p class="subtitle">Passe das Aussehen von Windows an deine Vorlieben an</p>
+
+                <div class="info-banner">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="currentColor"/>
+                    </svg>
+                    <span>Änderungen werden sofort angewendet. Der Explorer wird automatisch neu gestartet für sofortige Anzeige.</span>
+                </div>
+
+                <div class="tweaks-container" id="appearance-tweaks">
+                    <!-- Appearance Tweaks werden dynamisch geladen -->
+                </div>
+            </section>
+
+            <!-- Network Section -->
+            <section class="content-section" id="network">
+                <h1>Netzwerk-Optimierung</h1>
+                <p class="subtitle">Optimiere Netzwerk-Einstellungen für bessere Performance</p>
+
+                <div class="warning-banner">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" fill="currentColor"/>
+                    </svg>
+                    <span>Achtung! Netzwerk-Tweaks können Verbindungsprobleme verursachen. Erstelle einen Wiederherstellungspunkt.</span>
+                </div>
+
+                <div class="tweaks-container" id="network-tweaks">
+                    <!-- Network Tweaks werden dynamisch geladen -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container"></div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>

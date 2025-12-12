@@ -1,0 +1,32 @@
+{
+  "name": "windows-optimizer-tool",
+  "version": "1.0.0",
+  "description": "Ein visuelles Tool zur Windows-Optimierung mit Telemetrie-Deaktivierung, Registry-Tweaks und mehr",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "start:admin": "powershell -Command \"Start-Process npm -ArgumentList 'start' -Verb RunAs\"",
+    "build": "electron-builder"
+  },
+  "keywords": [
+    "windows",
+    "optimizer",
+    "privacy",
+    "telemetry",
+    "registry"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  },
+  "dependencies": {},
+  "build": {
+    "appId": "com.windowsoptimizer.app",
+    "win": {
+      "target": "nsis",
+      "requestedExecutionLevel": "requireAdministrator"
+    }
+  }
+}

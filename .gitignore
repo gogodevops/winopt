@@ -56,6 +56,3 @@ logs/
 *.bak
 *.old
 
-# Package lock (optional - auskommentieren wenn du es brauchst)
-# package-lock.json
-# yarn.lock

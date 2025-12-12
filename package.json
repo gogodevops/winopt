@@ -1,5 +1,6 @@
 {
   "name": "windows-optimizer-tool",
+  "productName": "Windows Optimizer Pro",
   "version": "1.0.0",
   "description": "Ein visuelles Tool zur Windows-Optimierung mit Telemetrie-Deaktivierung, Registry-Tweaks und mehr",
   "main": "main.js",
@@ -15,7 +16,10 @@
     "telemetry",
     "registry"
   ],
-  "author": "",
+  "author": {
+    "name": "GoGo DevOps",
+    "email": "gogodevelop@outlook.com"
+  },
   "license": "MIT",
   "devDependencies": {
     "electron": "^28.0.0",

@@ -2,6 +2,7 @@
 
 Ein modernes, visuelles Tool zur Windows-Optimierung mit Fokus auf Datenschutz, Performance und Benutzerfreundlichkeit.
 
+
 ![Windows Optimizer Pro](https://img.shields.io/badge/Windows-10%2F11-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Version](https://img.shields.io/badge/version-1.0.0-orange)
@@ -18,7 +19,9 @@ Ein modernes, visuelles Tool zur Windows-Optimierung mit Fokus auf Datenschutz, 
 
 ## 📸 Screenshots
 
-*Screenshots folgen*
+![Hauptfenster](screenshots/main-window.png)
+![Report](screenshots/virus-total-report.png)
+
 
 ## 🚀 Installation
 

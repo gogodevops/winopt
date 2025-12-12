@@ -193,8 +193,8 @@ function createWindow() {
 
   mainWindow.loadFile('index.html');
 
-  // DevTools für Entwicklung öffnen
-  mainWindow.webContents.openDevTools();
+  // DevTools für Entwicklung öffnen (nur für Development)
+  // mainWindow.webContents.openDevTools();
 
   mainWindow.on('closed', function () {
     mainWindow = null;

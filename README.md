@@ -1,4 +1,4 @@
-# Windows Optimizer Pro
+# WinPulse
 
 Ein modernes, visuelles Tool zur Windows-Optimierung mit Fokus auf Datenschutz, Performance und Benutzerfreundlichkeit.
 
